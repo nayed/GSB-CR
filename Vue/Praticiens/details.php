@@ -16,18 +16,6 @@ require 'Vue/_Commun/navigation.php';
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-sm-3 control-label">Nom</label>
-                <div class="col-sm-9">
-                    <p class="form-control-static"><?= $this->nettoyer($praticien['nomPraticien']) ?></p>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-sm-3 control-label">Prenom</label>
-                <div class="col-sm-9">
-                    <p class="form-control-static"><?= $this->nettoyer($praticien['prenomPraticien']) ?></p>
-                </div>
-            </div>
-            <div class="form-group">
                 <label class="col-sm-3 control-label">Adresse</label>
                 <div class="col-sm-9">
                     <p class="form-control-static"><?= $this->nettoyer($praticien['adressePraticien']) ?></p>
