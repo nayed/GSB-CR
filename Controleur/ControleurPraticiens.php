@@ -1,11 +1,11 @@
 <?php
 
-require_once 'Framework/Controleur.php';
+require_once 'Controleur/ControleurSecurise.php';
 require_once 'Modele/Praticien.php';
 require_once 'Modele/TypePraticien.php';
 
 // Contrôleur des actions liées aux praticiens
-class ControleurPraticiens extends Controleur {
+class ControleurPraticiens extends ControleurSecurise {
 
     // Objet modèle Médicament
     private $praticien;
@@ -51,10 +51,9 @@ class ControleurPraticiens extends Controleur {
     
     // Affiche le résultat de la recherche de type praticien
     public function resultats() {
-        if ($this->requete->existeParametre("id")) {
-            $idTypePraticien = $this->requete->getParametre("id");
-            $typePraticien = $this->typePraticien->getPraticienAvance($idTypePraticien);
-            $this->index($typePraticien);
+        if ($this->requete->existeParametre("idType")) {
+            $idTypePraticien = $this->requete->getParametre("idType");
+            $this->afficher($idTypePraticien);
         }
         else
             throw new Exception("Action impossible : aucun type praticien défini");
