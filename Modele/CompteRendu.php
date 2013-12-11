@@ -8,6 +8,8 @@ class CompteRendu extends Modele {
     private $sqlCompteRendu = 'select pr.id_praticien, id_rapport, date_rapport, motif, bilan from rapport_visite rv join praticien pr on
         rv.id_praticien = pr.id_praticien';
     
+    private $sqlModifCR = 'update rapport_visite set motif=?, bilan=? where id_rapport=?';
+    
     public function ajouterCompteRendu($idPraticien, $idVisiteur, $dateRapport, $motif, $bilan) {
         $sql = 'insert into RAPPORT_VISITE(id_praticien, id_visiteur, date_rapport, motif, bilan)'
             . ' values(?, ?, ?, ?, ?)';
@@ -20,4 +22,11 @@ class CompteRendu extends Modele {
         $compteRendu = $this->executerRequete($sql);
         return $compteRendu;
     }
+    
+    public function modifCompteRendu($motif, $bilan, $idCompteRendu) {
+        $sql = $this->sqlModifCR;
+        $this->executerRequete($sql, array($motif, $bilan, $idCompteRendu));
+    }
+    
+   
 }

@@ -23,22 +23,22 @@ class ControleurComptesRendus extends ControleurSecurise {
         $compteRendus = $this->compteRendu->getComptesRendus();
         $this->genererVue(array('compteRendus' => $compteRendus));
     }
-    
+
     // Affiche un compte rendu
     public function ajout() {
         $praticiens = $this->praticien->getPraticiens();
         $this->genererVue(array('praticiens' => $praticiens));
     }
-    
+
     // Ajoute un compte rendu
     public function ajouter() {
-         $idPraticien = $this->requete->getParametre("id");
+        $idPraticien = $this->requete->getParametre("id");
         $idVisiteur = $this->requete->getSession()->getAttribut("idVisiteur");
         $dateRapport = $this->requete->getParametre("date");
         $motif = $this->requete->getParametre("motif");
         $bilan = $this->requete->getParametre("bilan");
         $this->compteRendu->ajouterCompteRendu($idPraticien, $idVisiteur, $dateRapport, $motif, $bilan);
-        
+
         $this->genererVue();
     }
     

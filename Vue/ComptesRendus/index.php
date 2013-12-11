@@ -16,14 +16,13 @@ require 'Vue/_Commun/navigation.php';
                     <th>Motif</th>
                     <th></th>  <!-- Colonne des boutons d'action -->
                 </tr>
-            </thead>
-            <tbody><tr>
-                    <td class="vert-align">2013-12-05</td>
-                    <td class="vert-align">Ain Jean-Pierre</td>
-                    <td class="vert-align">LAON</td>
-                    <td class="vert-align">OOOOHOHOHOHO ACCIOOOOOOOOOOOOOOO</td>
+            </thead><tr>
+                    <td class="vert-align"></td>
+                    <td class="vert-align"></td>
+                    <td class="vert-align"></td>
+                    <td class="vert-align"></td>
                     <td>
-                        <a href="comptesrendus/modification/97" class="btn btn-info" title="Modifier">
+                        <a href="comptesrendus/modification/" class="btn btn-info" title="Modifier">
                             <span class="glyphicon glyphicon-edit"></span>
                         </a>
                         <button type="button" class="btn btn-danger" title="Supprimer" data-toggle="modal" data-target="#dlgConfirmation97">
@@ -49,7 +48,6 @@ require 'Vue/_Commun/navigation.php';
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
                     </td>
-                </tr>
-            </tbody></table>
+                </tr></table>
     </div>
 </div>
