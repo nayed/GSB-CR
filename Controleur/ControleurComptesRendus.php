@@ -50,20 +50,20 @@ class ControleurComptesRendus extends ControleurSecurise {
         $idRapport = $this->requete->getParametre("idCompteRendu");
         $motif = $this->requete->getParametre("motif");
         $bilan = $this->requete->getParametre("bilan");
-        $this->compteRendu->modifierCompteRendu($motif, $bilan, $idRapport);  
+        $this->compteRendu->modifCompteRendu($motif, $bilan, $idRapport);  
         $this->genererVue();
     }
     
     public function modification() {
         $idRapport = $this->requete->getParametre("id");
-        $compteRendu = $this->compteRendu->getComptesRendus("$idRapport");
+        $compteRendu = $this->compteRendu->getComptesRendus($idRapport);
         $this->genererVue(array('compteRendu' => $compteRendu));
 
     }
     
     public function supprimer() {
         $idRapport = $this->requete->getParametre("id");
-        $this->compteRendu->supprimerCompteRendu($idRapport); 
+        $this->compteRendu->suppCompteRendu($idRapport); 
         $this->rediriger("comptesRendus");
     }
 }
