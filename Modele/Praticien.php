@@ -14,8 +14,8 @@ class Praticien extends Modele {
     // Renvoie la liste des praticiens
     public function getPraticiens() {
         $sql = $this->sqlPraticien . ' order by nom_praticien';
-        $praticiens = $this->executerRequete($sql);
-        return $praticiens;
+        $typePraticiens = $this->executerRequete($sql);
+        return $typePraticiens;
     }
 
     // Renvoie un praticien à partir de son identifiant
@@ -28,11 +28,13 @@ class Praticien extends Modele {
             throw new Exception("Aucun praticien ne correspond à l'identifiant '$idPraticien'");
     }
 
-    public function getTypesPraticiens($idTypePraticien) {
-        $sql = $this->sqlPraticien . ' where TP.id_type_praticien = ? order by nomPraticien';
-        $typePraticien = $this->executerRequete($sql, array($idTypePraticien));
-        if ($typePraticien->rowCount() == 1)
-            return $typePraticien->fetch();  // Accès à la première ligne de résultat
+    public function getTypesPraticiens($idTypePraticien, $nom, $ville) {
+        $nom = '%' . $nom . '%';
+        $ville = '%' . $ville . '%';
+        $sql = $this->sqlPraticien . ' where TP.id_type_praticien = ? and nom_praticien like ? and ville_praticien like ? order by nomPraticien';
+        $typePraticien = $this->executerRequete($sql, array($idTypePraticien, $nom, $ville));
+        if ($typePraticien->rowCount() > 0)
+            return $typePraticien;  // Accès à la première ligne de résultat
         else
             throw new Exception("Aucun type praticien ne correspond à l'identifiant '$idTypePraticien'");
     }

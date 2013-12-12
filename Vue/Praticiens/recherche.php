@@ -55,7 +55,7 @@ require 'Vue/_Commun/navigation.php';
                     <div class="form-group">
                         <label class="col-sm-3 col-sm-offset-2 control-label">Type</label>
                         <div class="col-sm-5 col-md-4">
-                            <select class="form-control" name="idType">
+                            <select class="form-control" name="idTypePraticien">
                                 <?php foreach ($typePraticiens as $typePraticien) : ?>
                                     <option value="<?= $this->nettoyer($typePraticien['idTypePraticien']) ?>"><?= $this->nettoyer($typePraticien['libTypePraticien']) ?></option>
                                 <?php endforeach; ?>

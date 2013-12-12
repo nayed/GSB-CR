@@ -11,7 +11,7 @@ require 'Vue/_Commun/navigation.php';
             <div class="form-group">
                 <label class="col-sm-3 col-sm-offset-2 control-label">Praticien</label>
                 <div class="col-sm-7">
-                    <p class="form-control-static"><?= $this->nettoyer($compteRendu['nomPraticien']) . " " . $this->nettoyer($compteRendu['prenomPraticien']) ?></p>
+                    <p class="form-control-static"><?= $this->nettoyer($compteRendu['nomPraticien']) ?><?= $this->nettoyer($compteRendu['prenomPraticien']) ?></p>
                 </div>
             </div>
             <div class="form-group">
@@ -37,7 +37,7 @@ require 'Vue/_Commun/navigation.php';
                     <button type="submit" class="btn btn-default btn-primary"><span class="glyphicon glyphicon-plus"></span> Modifier</button>
                 </div>
             </div>
-            <input type="hidden" name="idCR" value="<?= $this->nettoyer($compteRendu['idCompteRendu']) ?>" />
+            <input type="hidden" name="idCompteRendu" value="<?= $this->nettoyer($compteRendu['idCompteRendu']) ?>" />
         </form>
     </div>
 </div>
