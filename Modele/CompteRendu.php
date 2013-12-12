@@ -5,11 +5,15 @@ require_once 'Framework/Modele.php';
 // Services métier liés aux praticiens 
 class CompteRendu extends Modele {
 
-    private $sqlCompteRendu = 'select pr.id_praticien, id_rapport, date_rapport, motif, bilan from rapport_visite rv join praticien pr on
-        rv.id_praticien = pr.id_praticien';
+    private $sqlCompteRendu = 'select pr.id_praticien as idPraticien, nom_praticien as nomPraticien, prenom_praticien as prenomPraticien,
+        ville_praticien as villePraticien, id_rapport as idCompteRendu, date_rapport as dateRapport, motif,
+        bilan from rapport_visite rv join praticien pr on rv.id_praticien = pr.id_praticien';
     
     private $sqlModifCR = 'update rapport_visite set motif=?, bilan=? where id_rapport=?';
     
+    private $sqlSuppCR = 'delete from rapport_visite where id_rapport=?';
+
+
     public function ajouterCompteRendu($idPraticien, $idVisiteur, $dateRapport, $motif, $bilan) {
         $sql = 'insert into RAPPORT_VISITE(id_praticien, id_visiteur, date_rapport, motif, bilan)'
             . ' values(?, ?, ?, ?, ?)';
@@ -18,7 +22,7 @@ class CompteRendu extends Modele {
     
     // Affiche la liste des comptes rendus
     public function getComptesRendus() {
-        $sql = $this->sqlCompteRendu . ' order by id_praticien';
+        $sql = $this->sqlCompteRendu . ' order by pr.id_praticien';
         $compteRendu = $this->executerRequete($sql);
         return $compteRendu;
     }
@@ -28,5 +32,8 @@ class CompteRendu extends Modele {
         $this->executerRequete($sql, array($motif, $bilan, $idCompteRendu));
     }
     
-   
+   public function suppCompteRendu($idCompteRendu) {
+       $sql = $this->sqlSuppCR;
+       $this->executerRequete($sql, array($idCompteRendu));
+   }
 }

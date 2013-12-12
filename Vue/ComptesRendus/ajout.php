@@ -6,7 +6,7 @@ require 'Vue/_Commun/navigation.php';
 <div class="container">
     <h2 class="text-center">Nouveau compte-rendu de visite</h2>
     <div class="well">
-        <form class="form-horizontal" role="form" action="comptesrendus/ajouter" method="post">
+        <form class="form-horizontal" role="form" action="comptesRendus/ajouter" method="post">
             <div class="form-group">
                 <label class="col-sm-3 col-sm-offset-2 control-label">Praticien</label>
                 <div class="col-sm-5 col-md-4">

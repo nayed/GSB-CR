@@ -49,20 +49,26 @@ class ControleurPraticiens extends ControleurSecurise {
             throw new Exception("Action impossible : aucun praticien défini");
     }
     
-    // Affiche le résultat de la recherche de type praticien
-    public function resultats() {
-        if ($this->requete->existeParametre("idType")) {
-            $idTypePraticien = $this->requete->getParametre("idType");
-            $this->afficher($idTypePraticien);
-        }
-        else
-            throw new Exception("Action impossible : aucun type praticien défini");
-    }
-    
     // Affiche les détails sur un praticien
     private function afficher($idPraticien) {
         $praticien = $this->praticien->getPraticien($idPraticien);
         $this->genererVue(array('praticien' => $praticien), "details");
+    }
+    
+    // Affiche le résultat de la recherche de type praticien
+    public function resultats() {
+        if ($this->requete->existeParametre("idType")) {
+            $idTypePraticien = $this->requete->getParametre("idType");
+            $this->afficherType($idTypePraticien);
+        }
+        else
+            throw new Exception("Action impossible : aucun type praticien défini");
+    }
+
+    // Affiche les détails sur un type de praticien
+    private function afficherType($idTypePraticien) {
+        $praticiens = $this->praticien->getTypesPraticiens($idTypePraticien);
+        $this->genererVue(array('praticiens' => $praticiens), "index");
     }
 
 }

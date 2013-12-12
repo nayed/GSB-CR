@@ -20,8 +20,13 @@ class ControleurComptesRendus extends ControleurSecurise {
 
     // Affiche la liste des comptes rendus
     public function index() {
-        $compteRendus = $this->compteRendu->getComptesRendus();
-        $this->genererVue(array('compteRendus' => $compteRendus));
+        $comptesRendus = $this->compteRendu->getComptesRendus();
+        $msgErreur = "Vous n'avez saisi aucun compte-rendu de visite.";
+        
+        if ($comptesRendus->rowCount() < 1)
+            $this->genererVue(array('msgErreur' => $msgErreur));
+        else
+            $this->genererVue(array('comptesRendus' => $comptesRendus));
     }
 
     // Affiche un compte rendu
@@ -38,9 +43,27 @@ class ControleurComptesRendus extends ControleurSecurise {
         $motif = $this->requete->getParametre("motif");
         $bilan = $this->requete->getParametre("bilan");
         $this->compteRendu->ajouterCompteRendu($idPraticien, $idVisiteur, $dateRapport, $motif, $bilan);
-
         $this->genererVue();
     }
     
+    public function modifier() {
+        $idRapport = $this->requete->getParametre("idCompteRendu");
+        $motif = $this->requete->getParametre("motif");
+        $bilan = $this->requete->getParametre("bilan");
+        $this->compteRendu->modifierCompteRendu($motif, $bilan, $idRapport);  
+        $this->genererVue();
+    }
     
+    public function modification() {
+        $idRapport = $this->requete->getParametre("id");
+        $compteRendu = $this->compteRendu->getComptesRendus("$idRapport");
+        $this->genererVue(array('compteRendu' => $compteRendu));
+
+    }
+    
+    public function supprimer() {
+        $idRapport = $this->requete->getParametre("id");
+        $this->compteRendu->supprimerCompteRendu($idRapport); 
+        $this->rediriger("comptesRendus");
+    }
 }

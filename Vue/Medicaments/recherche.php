@@ -1,6 +1,4 @@
-<?php $this->titre = "Médicaments"; ?>
-
-<?php
+<?php $this->titre = "Médicaments";
 $menuMedicaments = true;
 require 'Vue/_Commun/navigation.php';
 ?>
