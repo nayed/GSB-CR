@@ -16,6 +16,7 @@ require 'Vue/_Commun/navigation.php';
                 </ul>
             </div>
         </div>
+        <br />
         <div class="tab-content">
             <div class="tab-pane fade in active" id="simple">
                 <form class="form-horizontal" role="form" action="praticiens/resultat" method="post">
